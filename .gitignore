@@ -1,0 +1,16 @@
+# Node modules in both frontend and backend
+chalkup/node_modules/
+backend/node_modules/
+
+# Expo files
+chalkup/.expo/
+chalkup/.expo-shared/
+
+# Backend environment files
+backend/.env
+
+# macOS-specific
+.DS_Store
+
+# Log files
+*.log
