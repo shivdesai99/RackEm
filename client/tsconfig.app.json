@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     /* Output Settings */
-    "target": "ES2020", // Modern JavaScript features for browser compatibility
+    "target": "ESNext", // Modern JavaScript features for browser compatibility
     "lib": ["ES2020", "DOM", "DOM.Iterable"], // Include DOM and modern ES features
 
     /* Module Settings */
     "module": "ESNext", // Use ES modules
-    "moduleResolution": "node", // Resolve modules like Node.js
+    "moduleResolution": "Bundler", // Resolve modules like Node.js
     "allowSyntheticDefaultImports": true, // Allow default imports for CommonJS modules
     "esModuleInterop": true, // Interop for CommonJS and ES modules
     "resolveJsonModule": true, // Allow importing JSON files
@@ -29,7 +29,13 @@
 
     /* Incremental Builds */
     "incremental": true, // Enable faster builds
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo" // Store incremental build info
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Store incremental build info
+
+    /* Chakra UI-specific Settings */
+    "paths": {
+      // Enable aliasing for shorter import paths
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"], // Include only the source files
   "exclude": ["node_modules", "dist"] // Exclude build outputs and dependencies
