@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Heading, Spinner, VStack, Text } from "@chakra-ui/react";
-import FormInput from "../ui/FormInput";
+import FormInput from "@/components/ui/FormInput";
 import { registerAPI } from "@/api/auth";
 
 interface SignUpFormProps {
@@ -45,10 +45,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUpSuccess }) => {
 
     return (
         <Box
-            w="full"
-            maxW="sm"
-            mx="auto"
-            p={6}
+            w="100%" // Ensures full width of the parent container
+            maxW="550px" // Caps the maximum width for large screens
+            minW="400px" // Sets a minimum width to avoid shrinking too much
+            mx="auto" // Centers the form horizontally
+            p={{ base: 4, md: 8 }} // Adjusts padding for smaller and larger screens
             bg="surface"
             borderRadius="lg"
             boxShadow="md"

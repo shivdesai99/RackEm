@@ -12,6 +12,7 @@ interface FormInputProps {
 }
 
 const FormInput: React.FC<FormInputProps> = ({
+    label,
     value,
     onChange,
     type = "text",
@@ -28,11 +29,18 @@ const FormInput: React.FC<FormInputProps> = ({
                 placeholder={placeholder}
                 variant="filled"
                 size="lg"
+                fontSize={{ base: "md", md: "lg" }}
+                py={{ base: 4, md: 5 }}
+                px={{ base: 4, md: 5 }}
                 focusBorderColor="light-blue"
                 errorBorderColor="red.500"
                 borderRadius="md"
             />
-            {isInvalid && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+            {isInvalid && (
+                <FormErrorMessage fontSize={{ base: "sm", md: "md" }}>
+                    {errorMessage}
+                </FormErrorMessage>
+            )}
         </FormControl>
     );
 };

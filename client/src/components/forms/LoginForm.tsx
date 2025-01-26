@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Heading, Spinner, VStack, Text } from "@chakra-ui/react";
-import FormInput from "../ui/FormInput";
+import FormInput from "@/components/ui/FormInput";
 import { loginAPI } from "@/api/auth";
 
 interface LoginFormProps {
@@ -19,7 +19,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
     const handleLogin = async () => {
         setError(null);
 
-        // Basic validation
         if (!email || !password) {
             setError("Both fields are required.");
             return;
@@ -44,10 +43,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
 
     return (
         <Box
-            w="full"
-            maxW="sm"
-            mx="auto"
-            p={6}
+            w="100%" // Ensures full width of the parent container
+            maxW="550px" // Caps the maximum width for large screens
+            minW="400px" // Sets a minimum width to avoid shrinking too much
+            mx="auto" // Centers the form horizontally
+            p={{ base: 4, md: 8 }} // Adjusts padding for smaller and larger screens
             bg="surface"
             borderRadius="lg"
             boxShadow="md"
@@ -81,7 +81,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
                     errorMessage="Password is required"
                 />
                 {error && (
-                    <Text color="red.500" fontSize="sm" textAlign="center">
+                    <Text color="red.500" fontSize="md" textAlign="center">
                         {error}
                     </Text>
                 )}

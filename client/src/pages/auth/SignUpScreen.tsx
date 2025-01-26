@@ -34,9 +34,9 @@ const SignUpScreen: React.FC = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            p="4"
+            p="2"
         >
-            <VStack spacing="8" w="full" maxW="md" textAlign="center">
+            <VStack spacing="10" w="full" maxW="lg" textAlign="center">
                 <Header />
                 <SignUpForm onSignUpSuccess={handleSignUpSuccess} />
                 <VStack spacing="4">

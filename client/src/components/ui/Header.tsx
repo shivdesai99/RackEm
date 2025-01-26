@@ -9,9 +9,9 @@ const Header: React.FC<HeaderProps> = ({ title = "RackEm" }) => {
     return (
         <Heading
             color="primary"
-            size="2xl"
+            fontSize={{ base: "3xl", md: "6xl" }}
             textAlign="center"
-            mb="8"
+            mb={{ base: 6, md: 8 }}
             data-testid="header"
         >
             {title}

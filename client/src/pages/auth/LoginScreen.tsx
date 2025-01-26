@@ -1,4 +1,3 @@
-// Path: src/pages/auth/LoginScreen.tsx
 import React from "react";
 import { Box, Button, Text, useToast, VStack } from "@chakra-ui/react";
 import LoginForm from "@/components/forms/LoginForm";
@@ -34,15 +33,27 @@ const LoginScreen: React.FC = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            p="4"
+            p={{ base: 4, md: 8 }}
         >
-            <VStack spacing="8" w="full" maxW="md" textAlign="center">
+            <VStack
+                spacing={{ base: 6, md: 8 }}
+                w="full"
+                maxW={{ base: "95%", sm: "90%", md: "80%" }}
+                px={{ base: 4, md: 8 }}
+                textAlign="center"
+            >
                 <Header />
                 <LoginForm onLoginSuccess={handleLoginSuccess} />
-                <VStack spacing="4">
-                    <Text color="textSecondary">Don't have an account?</Text>
+                <VStack spacing={{ base: 4, md: 6 }}>
+                    <Text
+                        fontSize={{ base: "md", md: "lg" }}
+                        color="textSecondary"
+                    >
+                        Don't have an account?
+                    </Text>
                     <Button
                         variant="link"
+                        fontSize={{ base: "lg", md: "xl" }}
                         color="primary"
                         onClick={() => navigate("/signup")}
                     >
