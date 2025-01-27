@@ -57,7 +57,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
                 size="lg"
                 textAlign="center"
                 mb={6}
-                color="light-blue"
+                color="dark-blue"
             >
                 Login
             </Heading>
@@ -86,12 +86,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
                     </Text>
                 )}
                 {isLoading ? (
-                    <Spinner size="lg" color="light-blue" />
+                    <Spinner size="lg" color="dark-blue" />
                 ) : (
                     <Button
                         w="full"
                         colorScheme="blue"
-                        bg="light-blue"
+                        bg="dark-blue"
                         _hover={{ bg: "mid-blue" }}
                         size="lg"
                         onClick={handleLogin}

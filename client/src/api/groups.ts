@@ -10,7 +10,7 @@ const apiClient = axios.create({
 export const fetchGroupsAPI = async (token: string) => {
     try {
         console.log("Fetching groups with token:", token);
-        const response = await apiClient.get("/group/my-groups", {
+        const response = await apiClient.get("/groups/my-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },
@@ -35,7 +35,7 @@ export const fetchAllGroupsAPI = async (token: string) => {
             "Fetching all groups for Join Group Screen with token: ",
             token
         );
-        const response = await apiClient.get("/group/all-groups", {
+        const response = await apiClient.get("/groups/all-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },

@@ -59,7 +59,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUpSuccess }) => {
                 size="lg"
                 textAlign="center"
                 mb={6}
-                color="light-blue"
+                color="dark-blue"
             >
                 Sign Up
             </Heading>
@@ -96,12 +96,12 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUpSuccess }) => {
                     </Text>
                 )}
                 {isLoading ? (
-                    <Spinner size="lg" color="light-blue" />
+                    <Spinner size="lg" color="dark-blue" />
                 ) : (
                     <Button
                         w="full"
                         colorScheme="blue"
-                        bg="light-blue"
+                        bg="dark-blue"
                         _hover={{ bg: "mid-blue" }}
                         size="lg"
                         onClick={handleSignUp}

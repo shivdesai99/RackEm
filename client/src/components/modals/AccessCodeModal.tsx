@@ -73,7 +73,7 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
         <Modal isOpen={isOpen} onClose={onClose} isCentered size="sm">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader textAlign="center" color="light-blue">
+                <ModalHeader textAlign="center" color="dark-blue">
                     Join Group: {group.name}
                 </ModalHeader>
                 <ModalCloseButton />
@@ -84,7 +84,7 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                             value={joinCode}
                             onChange={(e) => setJoinCode(e.target.value)}
                             variant="filled"
-                            focusBorderColor="light-blue"
+                            focusBorderColor="dark-blue"
                             _placeholder={{ color: "gray" }}
                             size="lg"
                             aria-label="Enter Access Code"
@@ -102,7 +102,7 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                         isLoading={isSubmitting}
                         loadingText="Joining..."
                         colorScheme="blue"
-                        bg="light-blue"
+                        bg="dark-blue"
                         _hover={{ bg: "mid-blue" }}
                         size="lg"
                         w="full"

@@ -1,8 +1,8 @@
-import express, { Response } from 'express';
-import { getUsersInGroup } from '../db/userQueries';
-import { isUserInGroup } from '../db/userToGroupQueries';
-import { check, validationResult } from 'express-validator';
-import verifyToken, { AuthenticatedRequest } from '../middleware/verifyToken';
+import express, { Response } from "express";
+import { getUsersInGroup } from "../db/userQueries";
+import { isUserInGroup } from "../db/userToGroupQueries";
+import { check, validationResult } from "express-validator";
+import verifyToken, { AuthenticatedRequest } from "../middleware/verifyToken";
 
 const router = express.Router();
 
@@ -11,25 +11,25 @@ const router = express.Router();
  * Search for users by name within a specific group.
  */
 router.get(
-    '/search',
+    "/search",
     verifyToken,
     [
-        check('groupId')
+        check("groupId")
             .isInt()
-            .withMessage('Group ID must be an integer.')
+            .withMessage("Group ID must be an integer.")
             .toInt(),
-        check('name')
+        check("name")
             .isString()
-            .withMessage('Name must be a string.')
+            .withMessage("Name must be a string.")
             .isLength({ min: 2 })
-            .withMessage('Name must be at least 2 characters long.')
+            .withMessage("Name must be at least 2 characters long."),
     ],
     async (req: AuthenticatedRequest, res: Response): Promise<void> => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             res.status(400).json({ errors: errors.array() });
-            return
+            return;
         }
 
         const { groupId, name } = req.query;
@@ -38,16 +38,22 @@ router.get(
             // Validate group membership
             const isMember = await isUserInGroup(req.user!.id, Number(groupId));
             if (!isMember) {
-                res.status(403).json({ message: 'You do not have access to this group.' });
-                return
+                res.status(403).json({
+                    message: "You do not have access to this group.",
+                });
+                return;
             }
 
             // Fetch users in the group matching the name
-            const users = await getUsersInGroup(Number(groupId), name as string, req.user!.id);
+            const users = await getUsersInGroup(
+                Number(groupId),
+                name as string,
+                req.user!.id
+            );
             res.status(200).json(users);
         } catch (error) {
-            console.error('Error in /users/search route:', error);
-            res.status(500).json({ message: 'Failed to fetch users.' });
+            console.error("Error in /users/search route:", error);
+            res.status(500).json({ message: "Failed to fetch users." });
         }
     }
 );

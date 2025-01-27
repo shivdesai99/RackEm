@@ -32,7 +32,7 @@ const FormInput: React.FC<FormInputProps> = ({
                 fontSize={{ base: "md", md: "lg" }}
                 py={{ base: 4, md: 5 }}
                 px={{ base: 4, md: 5 }}
-                focusBorderColor="light-blue"
+                focusBorderColor="dark-blue"
                 errorBorderColor="red.500"
                 borderRadius="md"
             />

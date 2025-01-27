@@ -17,7 +17,7 @@ const GroupList: React.FC<GroupListProps> = ({
 }) => {
     return (
         <Box
-            bg="light-blue"
+            bg="dark-blue"
             p={{ base: 4, md: 6 }}
             borderRadius="lg"
             shadow="subtle"

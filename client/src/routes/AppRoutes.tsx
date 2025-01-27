@@ -4,8 +4,9 @@ import LoginScreen from "@/pages/auth/LoginScreen";
 import SignUpScreen from "@/pages/auth/SignUpScreen";
 
 import { GroupsProvider } from "@/context/GroupsContext";
-import GroupTabs from "@/components/groups/GroupTabs";
+import GroupTabs from "@/pages/groups/GroupTabs";
 import { useAuth } from "@/hooks/useAuth";
+import GroupHomePage from "@/pages/group-dashboard/GroupDashboardTabs";
 
 const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
     const { token } = useAuth();
@@ -28,6 +29,14 @@ const AppRoutes: React.FC = () => {
                         <GroupsProvider>
                             <GroupTabs />
                         </GroupsProvider>
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/group-dashboard/:group_id" // Add the group-dashboard route
+                element={
+                    <PrivateRoute>
+                        <GroupHomePage />
                     </PrivateRoute>
                 }
             />

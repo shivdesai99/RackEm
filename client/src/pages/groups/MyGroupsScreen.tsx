@@ -11,7 +11,6 @@ const MyGroupsScreen: React.FC = () => {
     const navigate = useNavigate();
 
     const navigateToGroupDashboard = (group: Group) => {
-        // Navigate to the group dashboard
         navigate(`/group-dashboard/${group.id}`);
     };
 

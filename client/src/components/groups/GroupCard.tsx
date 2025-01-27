@@ -29,12 +29,12 @@ const GroupCard: React.FC<GroupCardProps> = ({ group, onClick }) => {
             cursor="pointer"
             transition="transform 0.2s ease, background 0.2s ease"
             _hover={{
-                bg: "light-blue",
+                bg: "mid-blue",
                 color: "white",
                 transform: "scale(1.03)",
             }}
             _active={{
-                bg: "mid-blue",
+                bg: "dark-blue",
                 transform: "scale(0.98)",
             }}
             display="flex"
@@ -48,7 +48,7 @@ const GroupCard: React.FC<GroupCardProps> = ({ group, onClick }) => {
                 <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="bold">
                     {group.name}
                 </Text>
-                <Text fontSize={{ base: "sm", md: "md" }} color="gray">
+                <Text fontSize={{ base: "sm", md: "md" }} color="black">
                     {group.memberCount !== undefined
                         ? `${group.memberCount} ${
                               group.memberCount === 1 ? "member" : "members"
