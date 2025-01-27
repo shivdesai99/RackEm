@@ -23,7 +23,7 @@ const LoginScreen: React.FC = () => {
             duration: 3000,
             isClosable: true,
         });
-        navigate("/groups");
+        navigate(`/groups/${user.id}`);
     };
 
     return (

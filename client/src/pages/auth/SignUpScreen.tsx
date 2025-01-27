@@ -1,4 +1,3 @@
-// Path: src/pages/auth/SignUpScreen.tsx
 import React from "react";
 import { Box, Button, Text, useToast, VStack } from "@chakra-ui/react";
 import SignUpForm from "@/components/forms/SignUpForm";
@@ -24,7 +23,7 @@ const SignUpScreen: React.FC = () => {
             duration: 3000,
             isClosable: true,
         });
-        navigate("/groups");
+        navigate(`/groups/${user.id}`);
     };
 
     return (
@@ -34,15 +33,27 @@ const SignUpScreen: React.FC = () => {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            p="2"
+            p={{ base: 4, md: 8 }}
         >
-            <VStack spacing="10" w="full" maxW="lg" textAlign="center">
-                <Header />
+            <VStack
+                spacing={{ base: 6, md: 8 }}
+                w="full"
+                maxW={{ base: "95%", sm: "90%", md: "80%" }}
+                px={{ base: 4, md: 8 }}
+                textAlign="center"
+            >
+                <Header title="Sign Up" />
                 <SignUpForm onSignUpSuccess={handleSignUpSuccess} />
-                <VStack spacing="4">
-                    <Text color="textSecondary">Already have an account?</Text>
+                <VStack spacing={{ base: 4, md: 6 }}>
+                    <Text
+                        fontSize={{ base: "md", md: "lg" }}
+                        color="textSecondary"
+                    >
+                        Already have an account?
+                    </Text>
                     <Button
                         variant="link"
+                        fontSize={{ base: "lg", md: "xl" }}
                         color="primary"
                         onClick={() => navigate("/login")}
                     >

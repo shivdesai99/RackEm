@@ -15,6 +15,10 @@ export const fetchGroupsAPI = async (token: string) => {
                 authorization: `Bearer ${token}`,
             },
         });
+        console.log(
+            "Fetched groups in fetchGroupsAPI:",
+            response.data.myGroups
+        );
         return response.data.myGroups;
     } catch (error: any) {
         console.error(
@@ -36,6 +40,10 @@ export const fetchAllGroupsAPI = async (token: string) => {
                 authorization: `Bearer ${token}`,
             },
         });
+        console.log(
+            "Fetched all groups in fetchAllGroupsAPI:",
+            response.data.groups
+        );
         return response.data.groups;
     } catch (error: any) {
         console.error(
