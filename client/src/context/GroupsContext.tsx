@@ -8,7 +8,6 @@ import React, {
 import { fetchGroupsAPI, fetchAllGroupsAPI, joinGroupAPI } from "@/api/groups";
 import { useAuth } from "@/hooks/useAuth";
 import { handleError } from "@/utils/handleError";
-import { useToast } from "@chakra-ui/react";
 import { Group } from "@/types/models/Group";
 
 interface GroupsContextProps {
@@ -29,7 +28,6 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
     const [allGroups, setAllGroups] = useState<Group[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const { token, user } = useAuth();
-    const toast = useToast();
 
     const fetchMyGroups = useCallback(async () => {
         if (!token) return;
@@ -66,19 +64,10 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         try {
             await joinGroupAPI(token, groupId, joinCode);
             console.log("Successfully joined the group!");
-            toast({
-                title: "Success",
-                description: "Successfully joined the group!",
-                status: "success",
-            });
             await fetchMyGroups(); // Refresh My Groups
+            await fetchAllGroups(); // Refresh All Groups
         } catch (error: any) {
             handleError(error);
-            toast({
-                title: "Error",
-                description: error.message || "Failed to join the group.",
-                status: "error",
-            });
         } finally {
             setLoading(false);
         }

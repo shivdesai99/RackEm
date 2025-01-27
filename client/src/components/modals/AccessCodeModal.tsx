@@ -43,7 +43,7 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
         setError(null);
 
         try {
-            await onSubmit(group.id, joinCode); // Updated to use `group.id`
+            await onSubmit(group.id, joinCode);
             toast({
                 title: "Group joined successfully!",
                 description: `You have successfully joined the group: ${group.name}`,
@@ -51,11 +51,19 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                 duration: 3000,
                 isClosable: true,
             });
-            onClose(); // Close the modal on success
+            onClose();
         } catch (err: any) {
             setError(
-                err.message || "Failed to join the group. Please try again."
+                err.message ||
+                    "Failed to join the group. Please try again with the correct Join Code."
             );
+            toast({
+                title: "Error joining group",
+                description: err.message,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         } finally {
             setIsSubmitting(false);
         }

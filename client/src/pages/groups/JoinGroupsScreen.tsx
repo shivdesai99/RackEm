@@ -34,24 +34,10 @@ const JoinGroupsScreen: React.FC = () => {
     const handleJoinGroup = async (groupId: number, joinCode: string) => {
         try {
             await joinGroup(groupId, joinCode);
-            toast({
-                title: "Group joined successfully!",
-                description: `You have successfully joined the group.`,
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            });
             setIsModalOpen(false);
         } catch (error: any) {
-            toast({
-                title: "Error joining group",
-                description:
-                    error.message ||
-                    "Failed to join the group. Please try again.",
-                status: "error",
-                duration: 3000,
-                isClosable: true,
-            });
+            // Handle error
+            console.error("Failed to join group:", error);
         }
     };
 
