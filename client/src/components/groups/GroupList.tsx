@@ -15,6 +15,10 @@ const GroupList: React.FC<GroupListProps> = ({
     onCardClick,
     isJoined,
 }) => {
+    const sortedGroups = [...groups].sort(
+        (a, b) => (b.memberCount || 0) - (a.memberCount || 0)
+    );
+
     return (
         <Box
             bg="dark-blue"
@@ -24,12 +28,12 @@ const GroupList: React.FC<GroupListProps> = ({
             overflowY="auto"
             maxH={{ base: "70vh", md: "80vh" }}
         >
-            {groups.length > 0 ? (
+            {sortedGroups.length > 0 ? (
                 <SimpleGrid
                     minChildWidth={{ base: "200px", sm: "250px" }}
                     spacing={4}
                 >
-                    {groups.map((group) => (
+                    {sortedGroups.map((group) => (
                         <GroupCard
                             key={group.id}
                             group={group}

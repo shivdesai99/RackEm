@@ -4,13 +4,14 @@ import LoginScreen from "@/pages/auth/LoginScreen";
 import SignUpScreen from "@/pages/auth/SignUpScreen";
 
 import { GroupsProvider } from "@/context/GroupsContext";
+import { MenuProvider } from "@/context/MenuContext";
 import GroupTabs from "@/pages/groups/GroupTabs";
+import GroupHomePage from "@/pages/group-dashboard/GroupHomePage";
+import ProfilePage from "@/pages/profile/ProfilePage";
 import { useAuth } from "@/hooks/useAuth";
-import GroupHomePage from "@/pages/group-dashboard/GroupDashboardTabs";
 
 const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
     const { token } = useAuth();
-
     return token ? children : <Navigate to="/login" replace />;
 };
 
@@ -26,17 +27,32 @@ const AppRoutes: React.FC = () => {
                 path="/groups/:user_id"
                 element={
                     <PrivateRoute>
-                        <GroupsProvider>
-                            <GroupTabs />
-                        </GroupsProvider>
+                        <MenuProvider>
+                            <GroupsProvider>
+                                <GroupTabs />
+                            </GroupsProvider>
+                        </MenuProvider>
                     </PrivateRoute>
                 }
             />
             <Route
-                path="/group-dashboard/:group_id" // Add the group-dashboard route
+                path="/group-dashboard/:group_id"
                 element={
                     <PrivateRoute>
-                        <GroupHomePage />
+                        <MenuProvider>
+                            <GroupHomePage />
+                        </MenuProvider>
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path="/profile"
+                element={
+                    <PrivateRoute>
+                        <MenuProvider>
+                            <ProfilePage />
+                            {/* TO-DO: ProfilePage should display user statistics like total games, wins, losses, etc. */}
+                        </MenuProvider>
                     </PrivateRoute>
                 }
             />

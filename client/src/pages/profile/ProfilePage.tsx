@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const GroupDashBoardTabs: React.FC = () => {
+const ProfilePage: React.FC = () => {
     return (
         <Box
             w="full"
@@ -14,11 +14,11 @@ const GroupDashBoardTabs: React.FC = () => {
             textAlign="center"
         >
             <Text fontSize="xl" fontWeight="bold">
-                Group Dashboard
+                Profile Page
             </Text>
             <Text>This page is under construction.</Text>
         </Box>
     );
 };
 
-export default GroupDashBoardTabs;
+export default ProfilePage;
