@@ -5,6 +5,7 @@ import SignUpScreen from "@/pages/auth/SignUpScreen";
 
 import { GroupsProvider } from "@/context/GroupsContext";
 import { MenuProvider } from "@/context/MenuContext";
+import { GroupPageProvider } from "@/context/GroupPageContext";
 import GroupTabs from "@/pages/groups/GroupTabs";
 import GroupHomePage from "@/pages/group-dashboard/GroupHomePage";
 import ProfilePage from "@/pages/profile/ProfilePage";
@@ -40,7 +41,9 @@ const AppRoutes: React.FC = () => {
                 element={
                     <PrivateRoute>
                         <MenuProvider>
-                            <GroupHomePage />
+                            <GroupPageProvider>
+                                <GroupHomePage />
+                            </GroupPageProvider>
                         </MenuProvider>
                     </PrivateRoute>
                 }

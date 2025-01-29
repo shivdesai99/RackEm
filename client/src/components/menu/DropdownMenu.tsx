@@ -73,7 +73,7 @@ const DropdownMenu: React.FC = () => {
                         align="stretch"
                         py={2}
                         px={4}
-                        onClick={closeMenu} // Ensure clicking items in the menu closes the menu
+                        onClick={closeMenu}
                     >
                         <motion.div variants={itemVariants}>
                             <MenuItem

@@ -40,6 +40,8 @@ export const addMatch = async (
 
 /**
  * Get all matches for a specific group ordered by the most recent match first.
+ * Fetches the winner and loser names by joining with the users table.
+ *
  * @param groupId - The ID of the group whose matches are being fetched.
  * @returns An array of match details ordered by date_posted in descending order.
  */
@@ -47,15 +49,20 @@ export const getGameLog = async (groupId: number) => {
     try {
         const matches = await knex("matches")
             .select([
-                "match_id",
-                "group_id",
-                "winner_id",
-                "loser_id",
-                "balls_left",
-                "date_posted",
+                "matches.match_id",
+                "matches.group_id",
+                "matches.winner_id",
+                "matches.loser_id",
+                "matches.balls_left",
+                "matches.date_posted",
+                "winner.name as winner_name", // Fetch winner's name
+                "loser.name as loser_name", // Fetch loser's name
             ])
-            .where({ group_id: groupId })
-            .orderBy("date_posted", "desc");
+            .leftJoin("users as winner", "matches.winner_id", "winner.id")
+            .leftJoin("users as loser", "matches.loser_id", "loser.id")
+            .where("matches.group_id", groupId)
+            .orderBy("matches.date_posted", "desc");
+
         return matches;
     } catch (error) {
         console.error("Error fetching matches for group:", error);

@@ -7,7 +7,7 @@ import verifyToken, { AuthenticatedRequest } from "../middleware/verifyToken";
 
 const router = express.Router();
 
-// GET /group/:groupId - Fetch metadata for a specific group
+// GET /group-page/:groupId - Fetch metadata for a specific group
 router.get(
     "/:groupId",
     verifyToken,
@@ -40,7 +40,7 @@ router.get(
 );
 
 /**
- * GET /group/:groupId/leaderboard
+ * GET /group-page/:groupId/leaderboard
  * Get the leaderboard for a specific group.
  */
 router.get(
@@ -63,7 +63,7 @@ router.get(
 );
 
 /**
- * GET /group/:groupId/gamelog
+ * GET /group-page/:groupId/gamelog
  * Get the game log for a specific group.
  */
 router.get(
