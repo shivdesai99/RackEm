@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom"; // Import useParams
+import { useParams } from "react-router-dom";
 import {
     Tabs,
     TabList,
@@ -9,40 +9,44 @@ import {
     Box,
     Spinner,
 } from "@chakra-ui/react";
-import LeaderboardList from "./LeaderboardList";
-import GameLogList from "./GameLogList";
+import LeaderboardList from "@/components/group-page/LeaderboardList";
+import GameLogList from "@/components/group-page/GameLogList";
 import useGroupPage from "@/hooks/useGroupPage";
 
 const GroupPageTabs: React.FC = () => {
-    const { group_id } = useParams<{ group_id: string }>(); // Get groupId from URL
+    const { group_id } = useParams<{ group_id: string }>();
     const { leaderboard, gameLog, loading, fetchLeaderboard, fetchGameLog } =
         useGroupPage();
-    console.log("GroupPageTabs loaded with groupId:", group_id);
+
     useEffect(() => {
         if (group_id) {
-            fetchLeaderboard(Number(group_id)); // Convert to number
+            fetchLeaderboard(Number(group_id));
             fetchGameLog(Number(group_id));
         }
     }, [fetchLeaderboard, fetchGameLog, group_id]);
 
     return (
-        <Box mt={4} maxW="95%" mx="auto">
-            <Tabs variant="soft-rounded" colorScheme="blue">
+        <Box mt={4} maxW="100%" mx="auto">
+            <Tabs variant="solid-rounded" colorScheme="cyan">
                 <TabList justifyContent="center" mb={4}>
-                    <Tab>Leaderboard</Tab>
-                    <Tab>Game Log</Tab>
+                    <Tab _selected={{ bg: "dark-blue", color: "white" }}>
+                        Leaderboard
+                    </Tab>
+                    <Tab _selected={{ bg: "dark-blue", color: "white" }}>
+                        Game Log
+                    </Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>
                         {loading ? (
-                            <Spinner size="lg" color="white" />
+                            <Spinner size="lg" color="gray.600" />
                         ) : (
                             <LeaderboardList leaderboard={leaderboard} />
                         )}
                     </TabPanel>
                     <TabPanel>
                         {loading ? (
-                            <Spinner size="lg" color="white" />
+                            <Spinner size="lg" color="gray.600" />
                         ) : (
                             <GameLogList gameLog={gameLog} />
                         )}

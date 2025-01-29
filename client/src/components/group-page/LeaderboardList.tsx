@@ -23,7 +23,7 @@ const LeaderboardList: React.FC<LeaderboardListProps> = ({ leaderboard }) => {
             h="65vh" // Restrict height for scrolling
             overflowY="auto" // Enable scrolling
         >
-            <VStack spacing={4} w="full">
+            <VStack align="stretch">
                 {leaderboard.map((entry, index) => (
                     <LeaderboardCard
                         key={entry.user_id}

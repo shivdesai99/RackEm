@@ -9,8 +9,7 @@ import knex from "./knex_db";
  */
 export const getUsersInGroup = async (
     groupId: number,
-    name: string,
-    excludeUserId: number
+    name: string
 ): Promise<{ user_id: number; name: string; email: string }[]> => {
     try {
         const users = await knex("user_to_groups")
@@ -18,7 +17,6 @@ export const getUsersInGroup = async (
             .select("users.id as user_id", "users.name", "users.email")
             .where("user_to_groups.group_id", groupId)
             .andWhere("users.name", "like", `%${name}%`)
-            .andWhere("users.id", "<>", excludeUserId)
             .orderBy("users.name", "asc")
             .limit(10);
 

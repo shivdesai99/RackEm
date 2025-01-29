@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, VStack, HStack, Divider } from "@chakra-ui/react";
+import { Box, Text, HStack, Spacer } from "@chakra-ui/react";
 import { Match } from "@/types/models/Match";
 
 interface GameLogCardProps {
@@ -17,40 +17,58 @@ const GameLogCard: React.FC<GameLogCardProps> = ({ match, matchNumber }) => {
         });
     };
 
+    // Randomly swap player order for visual variation
+    const players =
+        Math.random() > 0.5
+            ? `${match.winner_name} vs. ${match.loser_name}`
+            : `${match.loser_name} vs. ${match.winner_name}`;
+
     return (
         <Box
-            bg="white"
-            p={4}
-            borderRadius="lg"
-            boxShadow="subtle"
-            mb={4}
-            transition="transform 0.2s ease-in-out"
-            _hover={{
-                transform: "scale(.99)",
-            }}
+            bg="whiteAlpha.900"
+            p={5}
+            borderRadius="md"
+            boxShadow="sm"
+            w="100%"
+            maxW="700px"
+            mx="auto"
+            mb={2}
         >
-            <HStack justifyContent="space-between" mb={2}>
-                <Text fontWeight="bold" fontSize="lg" color="dark-blue">
+            <HStack spacing={3} justifyContent="space-between">
+                {/* Match Number */}
+                <Text fontWeight="bold" color="gray.700">
                     Match #{matchNumber}
                 </Text>
-                <Text fontSize="sm" color="white">
+
+                {/* Players */}
+                <Text fontSize="md" color="gray.800">
+                    {players}
+                </Text>
+
+                {/* Winner */}
+                {/* Add a slight seperate between players names and result */}
+                <Spacer />
+                <Text fontSize="md" color="green.300" fontWeight="bold">
+                    <Text as="span" mr={3}>
+                        {match.winner_name}
+                    </Text>
+                    🏆{" "}
+                </Text>
+
+                {/* Balls Left (only if applicable) */}
+                {match.balls_left !== null && (
+                    <Text fontSize="sm" color="gray.500">
+                        Balls Left: {match.balls_left}
+                    </Text>
+                )}
+
+                <Spacer />
+
+                {/* Match Date */}
+                <Text fontSize="xs" color="gray.500">
                     {formatDate(match.date_posted)}
                 </Text>
             </HStack>
-            <Divider />
-            <VStack align="start" spacing={2} mt={2}>
-                <Text color="black">
-                    <strong>Winner:</strong> {match.winner_name}
-                </Text>
-                <Text color="dark-gray">
-                    <strong>Loser:</strong> {match.loser_name}
-                </Text>
-                {match.balls_left !== null && (
-                    <Text color="black">
-                        <strong>Balls Left:</strong> {match.balls_left}
-                    </Text>
-                )}
-            </VStack>
         </Box>
     );
 };

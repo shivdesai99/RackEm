@@ -12,14 +12,13 @@ const MenuIcon: React.FC = () => {
             top={{ base: 5, md: 7 }}
             right={{ base: 5, md: 7 }}
             zIndex="10"
-            boxSize={{ sm: "14", md: "100" }} // Adjust the size of the circle here
+            boxSize={{ sm: "14", md: "75" }} // Adjust the size of the circle here
             display="flex"
             alignItems="center"
             justifyContent="center"
             cursor="pointer"
-            bg="dark-blue"
             borderRadius="full"
-            _hover={{ bg: "mid-blue" }}
+            _hover={{ bg: "white" }}
             aria-label="Open Menu"
             onClick={() => {
                 console.log("MenuIcon clicked");

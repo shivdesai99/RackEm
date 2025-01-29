@@ -47,8 +47,7 @@ router.get(
             // Fetch users in the group matching the name
             const users = await getUsersInGroup(
                 Number(groupId),
-                name as string,
-                req.user!.id
+                name as string
             );
             res.status(200).json(users);
         } catch (error) {

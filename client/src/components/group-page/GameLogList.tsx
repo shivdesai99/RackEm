@@ -25,7 +25,7 @@ const GameLogList: React.FC<GameLogListProps> = ({ gameLog }) => {
             h="65vh" // Restrict height for scrolling
             overflowY="auto" // Enable scrolling
         >
-            <VStack spacing={4} align="stretch">
+            <VStack align="stretch">
                 {gameLog
                     .slice()
                     .reverse() // Reverse order so the latest match is at the bottom
