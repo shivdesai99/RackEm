@@ -17,12 +17,7 @@ const LeaderboardList: React.FC<LeaderboardListProps> = ({ leaderboard }) => {
     }
 
     return (
-        <Box
-            maxW="90%" // Reduced width for better spacing
-            mx="auto"
-            h="65vh" // Restrict height for scrolling
-            overflowY="auto" // Enable scrolling
-        >
+        <Box maxW="80%" mx="auto" h="65vh" overflowY="auto">
             <VStack align="stretch">
                 {leaderboard.map((entry, index) => (
                     <LeaderboardCard

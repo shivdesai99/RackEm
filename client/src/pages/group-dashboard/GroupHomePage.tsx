@@ -6,7 +6,7 @@ import DropdownMenu from "@/components/menu/DropdownMenu";
 import useGroupPage from "@/hooks/useGroupPage";
 import { useParams } from "react-router-dom";
 import PostMatchButton from "@/components/group-page/PostMatchButton";
-import PostMatchModal from "@/components/modals/PostMatchModal";
+import PostMatchModal from "@/components/modals/PostMatchModal"; // Added Modal Import
 
 const GroupHomePage: React.FC = () => {
     const { group, loading, fetchGroupData } = useGroupPage();
@@ -21,7 +21,7 @@ const GroupHomePage: React.FC = () => {
         <Box
             display="flex"
             flexDirection="column"
-            gap={6}
+            gap={14}
             h="80vh"
             bg="#1E2A47" // Darker Navy for a more modern feel
             pl={16}
@@ -36,7 +36,13 @@ const GroupHomePage: React.FC = () => {
                 {loading ? (
                     <Spinner size="lg" color="white" />
                 ) : (
-                    <Text fontSize="2xl" fontWeight="bold" color="#DDE6FF">
+                    <Text
+                        fontSize="5xl"
+                        fontWeight="bold"
+                        color="white"
+                        fontFamily="Georgia"
+                        textShadow="2px 2px 4px rgba(0, 0, 0, 0.5)"
+                    >
                         {group?.name || "Group Name"}
                     </Text>
                 )}
@@ -46,7 +52,7 @@ const GroupHomePage: React.FC = () => {
                 flex={1}
                 mt={4}
                 mb={4}
-                bg="whiteAlpha.900" // Light neutral background for contrast
+                bg="whiteAlpha.900"
                 borderRadius="lg"
                 boxShadow="md"
                 overflow="auto"
@@ -55,22 +61,16 @@ const GroupHomePage: React.FC = () => {
                 <GroupPageTabs />
             </Box>
 
-            <Box
-                bg="gray.700" // More contrast for visibility
-                py={3}
-                textAlign="center"
-                borderRadius="md"
-                boxShadow="md"
-                position="relative"
-                bottom={0}
-            >
+            <Box textAlign="center" position="relative" bottom={15}>
                 <PostMatchButton onOpen={() => setIsModalOpen(true)} />
-                <PostMatchModal
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                    groupId={Number(group_id)}
-                />
             </Box>
+
+            {/* Post Match Modal */}
+            <PostMatchModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                groupId={Number(group_id)}
+            />
         </Box>
     );
 };

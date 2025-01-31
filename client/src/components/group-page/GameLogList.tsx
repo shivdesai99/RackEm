@@ -19,21 +19,20 @@ const GameLogList: React.FC<GameLogListProps> = ({ gameLog }) => {
     }
 
     return (
-        <Box
-            maxW="90%" // Reduced width for better spacing
-            mx="auto"
-            h="65vh" // Restrict height for scrolling
-            overflowY="auto" // Enable scrolling
-        >
+        <Box maxW="90%" mx="auto" h="65vh" overflowY="auto">
             <VStack align="stretch">
                 {gameLog
                     .slice()
-                    .reverse() // Reverse order so the latest match is at the bottom
-                    .map((match, index, arr) => (
+                    .sort(
+                        (a, b) =>
+                            new Date(b.date_posted).getTime() -
+                            new Date(a.date_posted).getTime()
+                    )
+                    .map((match, index) => (
                         <GameLogCard
                             key={match.match_id}
                             match={match}
-                            matchNumber={arr.length - index} // Ensuring latest matches get the highest number
+                            matchNumber={gameLog.length - index}
                         />
                     ))}
             </VStack>

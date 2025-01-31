@@ -80,35 +80,6 @@ export const fetchGameLogAPI = async (
 };
 
 /**
- * Search for users in a group by name.
- * @param groupId - The ID of the group.
- * @param name - The partial or full name to search for.
- * @param token - The authentication token.
- * @returns A list of matching users with their IDs and names.
- */
-export const searchUsersInGroupAPI = async (
-    groupId: number,
-    name: string,
-    token: string
-): Promise<{ user_id: number; name: string; email: string }[]> => {
-    try {
-        const response = await apiClient.get("/users/search", {
-            headers: { Authorization: `Bearer ${token}` },
-            params: { groupId, name },
-        });
-        return response.data;
-    } catch (error: any) {
-        console.error(
-            "Error searching for users in group:",
-            error.response?.data
-        );
-        throw new Error(
-            error.response?.data?.message || "Failed to search for users."
-        );
-    }
-};
-
-/**
  * Post a new match result.
  * @param groupId - The ID of the group.
  * @param winnerId - The ID of the winner.
@@ -125,11 +96,13 @@ export const postMatchAPI = async (
     token: string
 ): Promise<Match> => {
     try {
+        console.log("Posting match:", groupId, winnerId, loserId, ballsLeft);
         const response = await apiClient.post(
             `/${groupId}/match`,
             { groupId, winnerId, loserId, ballsLeft },
             { headers: { Authorization: `Bearer ${token}` } }
         );
+        console.log("Match response:", response.data);
         return response.data.match;
     } catch (error: any) {
         console.error("Error posting match:", error.response?.data);

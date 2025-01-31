@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:5001",
+    baseURL: "http://localhost:5001/groups",
     headers: {
         "Content-Type": "application/json",
     },
@@ -10,7 +10,7 @@ const apiClient = axios.create({
 export const fetchGroupsAPI = async (token: string) => {
     try {
         console.log("Fetching groups with token:", token);
-        const response = await apiClient.get("/groups/my-groups", {
+        const response = await apiClient.get("/my-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },
@@ -35,7 +35,7 @@ export const fetchAllGroupsAPI = async (token: string) => {
             "Fetching all groups for Join Group Screen with token: ",
             token
         );
-        const response = await apiClient.get("/groups/all-groups", {
+        const response = await apiClient.get("/all-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },
@@ -67,7 +67,7 @@ export const joinGroupAPI = async (
     try {
         console.log("Attempting to join group with token:", token);
         const response = await apiClient.post(
-            "/group/join",
+            "/join",
             { groupId, joinCode },
             {
                 headers: {

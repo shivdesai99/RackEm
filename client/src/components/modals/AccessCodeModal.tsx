@@ -50,6 +50,8 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                 status: "success",
                 duration: 3000,
                 isClosable: true,
+                position: "bottom",
+                containerStyle: { paddingBottom: "50rem" },
             });
             onClose();
         } catch (err: any) {
@@ -63,6 +65,8 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                 status: "error",
                 duration: 3000,
                 isClosable: true,
+                position: "bottom",
+                containerStyle: { paddingBottom: "50rem" },
             });
         } finally {
             setIsSubmitting(false);

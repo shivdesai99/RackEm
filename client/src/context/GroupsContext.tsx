@@ -64,8 +64,8 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         try {
             await joinGroupAPI(token, groupId, joinCode);
             console.log("Successfully joined the group!");
-            await fetchMyGroups(); // Refresh My Groups
-            await fetchAllGroups(); // Refresh All Groups
+            await fetchMyGroups();
+            await fetchAllGroups();
         } catch (error: any) {
             handleError(error);
         } finally {

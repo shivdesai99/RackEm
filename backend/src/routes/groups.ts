@@ -10,7 +10,7 @@ import verifyToken, { AuthenticatedRequest } from "../middleware/verifyToken";
 
 const router = express.Router();
 
-// POST /group/join - Allow a user to join a group using a join code
+// POST /groups/join - Allow a user to join a group using a join code
 router.post(
     "/join",
     verifyToken,

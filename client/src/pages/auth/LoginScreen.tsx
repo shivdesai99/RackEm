@@ -20,8 +20,10 @@ const LoginScreen: React.FC = () => {
             title: "Login Successful",
             description: "You have successfully logged in.",
             status: "success",
-            duration: 3000,
+            duration: 1000,
             isClosable: true,
+            position: "top",
+            containerStyle: { paddingTop: "20rem" },
         });
         navigate(`/groups/${user.id}`);
     };

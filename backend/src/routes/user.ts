@@ -18,11 +18,7 @@ router.get(
             .isInt()
             .withMessage("Group ID must be an integer.")
             .toInt(),
-        check("name")
-            .isString()
-            .withMessage("Name must be a string.")
-            .isLength({ min: 2 })
-            .withMessage("Name must be at least 2 characters long."),
+        check("name").isString().withMessage("Name must be a string."),
     ],
     async (req: AuthenticatedRequest, res: Response): Promise<void> => {
         const errors = validationResult(req);

@@ -21,8 +21,10 @@ const JoinGroupsScreen: React.FC = () => {
                 title: "Already a member",
                 description: `You are already a member of the group: ${group.name}`,
                 status: "info",
-                duration: 3000,
+                duration: 1000,
                 isClosable: true,
+                position: "top",
+                containerStyle: { paddingTop: "20rem" },
             });
             return;
         }

@@ -8,15 +8,19 @@ interface LeaderboardCardProps {
 }
 
 const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ entry, rank }) => {
-    // Calculate win rate dynamically
     const winRate =
         entry.total_matches > 0
             ? ((entry.wins / entry.total_matches) * 100).toFixed(1)
             : "0.0";
 
+    const medal =
+        rank === 1 ? "🏅" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : "";
+
+    const fontSize = rank <= 3 ? "2xl" : "lg";
+
     return (
         <Box
-            w="full"
+            w="auto"
             bg="white"
             p={3}
             borderRadius="md"
@@ -27,14 +31,29 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ entry, rank }) => {
             }}
         >
             <HStack justify="space-between" align="center">
-                {/* Rank + Name */}
                 <HStack spacing={4}>
-                    <Text fontSize="lg" fontWeight="bold">
+                    <Text fontSize={fontSize} fontWeight="bold">
                         #{rank}
                     </Text>
-                    <Text fontSize="lg" fontWeight="medium">
-                        {entry.name}
-                    </Text>
+
+                    {/* Container with fixed width so medals align perfectly */}
+                    <HStack spacing={2} minWidth="200px">
+                        <Text fontSize={fontSize} fontWeight="medium">
+                            {entry.name}
+                        </Text>
+                    </HStack>
+
+                    {/* Medal with fixed width to ensure alignment */}
+                    {medal && (
+                        <Text
+                            fontSize="5xl"
+                            fontWeight="bold"
+                            minWidth="40px"
+                            textAlign="center"
+                        >
+                            {medal}
+                        </Text>
+                    )}
                 </HStack>
 
                 {/* Stats */}

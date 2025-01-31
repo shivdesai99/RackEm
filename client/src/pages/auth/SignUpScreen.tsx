@@ -20,8 +20,10 @@ const SignUpScreen: React.FC = () => {
             title: "Sign Up Successful",
             description: "Your account has been created.",
             status: "success",
-            duration: 3000,
+            duration: 1000,
             isClosable: true,
+            position: "top",
+            containerStyle: { paddingTop: "20rem" },
         });
         navigate(`/groups/${user.id}`);
     };

@@ -9,16 +9,16 @@ const MenuIcon: React.FC = () => {
     return (
         <Box
             position="absolute"
-            top={{ base: 5, md: 7 }}
-            right={{ base: 5, md: 7 }}
+            top={{ base: 5, md: 4 }}
+            right={{ base: 5, md: 4 }}
             zIndex="10"
-            boxSize={{ sm: "14", md: "75" }} // Adjust the size of the circle here
+            boxSize={{ sm: "14", md: "75" }}
             display="flex"
             alignItems="center"
             justifyContent="center"
             cursor="pointer"
             borderRadius="full"
-            _hover={{ bg: "white" }}
+            _hover={{ bg: "gray" }}
             aria-label="Open Menu"
             onClick={() => {
                 console.log("MenuIcon clicked");

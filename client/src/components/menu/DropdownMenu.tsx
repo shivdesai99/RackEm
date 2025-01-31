@@ -17,12 +17,10 @@ const DropdownMenu: React.FC = () => {
 
     const menuRef = React.useRef<HTMLDivElement>(null);
 
-    // Close menu on outside click
     useOutsideClick({
         ref: menuRef,
         handler: (event) => {
             const target = event.target as HTMLElement;
-            // Exclude clicks on the MenuIcon
             if (!target.closest("[aria-label='Open Menu']")) {
                 closeMenu();
             }
