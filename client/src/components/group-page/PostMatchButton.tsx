@@ -3,10 +3,9 @@ import { Button } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 
 interface PostScoreButtonProps {
-    onOpen: () => void; // Function to open the Post Score Modal
+    onOpen: () => void;
 }
 
-// Define a smoother "shiny" animation with a pause
 const shineAnimation = keyframes`
     0% {
         transform: translateX(-100%);

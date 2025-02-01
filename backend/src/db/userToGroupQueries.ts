@@ -1,4 +1,4 @@
-import knex from "./knex_db";
+import knex from "../config/knex_db";
 
 export const isUserInGroup = async (userId: number, groupId: number) => {
     try {

@@ -36,14 +36,12 @@ const LeaderboardCard: React.FC<LeaderboardCardProps> = ({ entry, rank }) => {
                         #{rank}
                     </Text>
 
-                    {/* Container with fixed width so medals align perfectly */}
                     <HStack spacing={2} minWidth="200px">
                         <Text fontSize={fontSize} fontWeight="medium">
                             {entry.name}
                         </Text>
                     </HStack>
 
-                    {/* Medal with fixed width to ensure alignment */}
                     {medal && (
                         <Text
                             fontSize="5xl"

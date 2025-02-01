@@ -48,7 +48,7 @@ const AccessCodeModal: React.FC<AccessCodeModalProps> = ({
                 title: "Group joined successfully!",
                 description: `You have successfully joined the group: ${group.name}`,
                 status: "success",
-                duration: 3000,
+                duration: 1000,
                 isClosable: true,
                 position: "bottom",
                 containerStyle: { paddingBottom: "50rem" },

@@ -1,4 +1,4 @@
-import db from "./knex_db";
+import db from "../config/knex_db";
 
 const testConnection = async (): Promise<void> => {
     console.log("Starting test connection...");

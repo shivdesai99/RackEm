@@ -1,4 +1,4 @@
-import knex from "./knex_db";
+import knex from "../config/knex_db";
 
 /**
  * Search for users in a specific group by name.

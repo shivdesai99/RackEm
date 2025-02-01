@@ -25,11 +25,10 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     const [loaded, setLoaded] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
-    // Fetch all users when the component mounts
     useEffect(() => {
         const fetchAllUsers = async () => {
             try {
-                const users = await searchUsers(groupId, ""); // Fetch all users
+                const users = await searchUsers(groupId, "");
                 setAllUsers(
                     users.map((user: User) => ({
                         value: user.user_id,
@@ -45,10 +44,9 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
         fetchAllUsers();
     }, [groupId, searchUsers]);
 
-    // Function to fetch users dynamically as the user types
     const loadOptions = async (inputValue: string) => {
         if (!loaded) return [];
-        if (!inputValue.trim()) return allUsers; // Show all users if no input
+        if (!inputValue.trim()) return allUsers;
 
         try {
             const filteredUsers = allUsers.filter((user) =>
@@ -65,7 +63,7 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
         <AsyncSelect
             cacheOptions
             loadOptions={loadOptions}
-            defaultOptions={allUsers} // Show all users on focus
+            defaultOptions={allUsers}
             placeholder={placeholder}
             value={inputValue ? { value: 0, label: inputValue } : null}
             onInputChange={(newValue, { action }) => {
@@ -81,7 +79,7 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
                         name: selectedOption.label,
                     });
                 } else {
-                    setInputValue(""); // Allow clearing the field
+                    setInputValue("");
                     onSelect(null);
                 }
             }}
