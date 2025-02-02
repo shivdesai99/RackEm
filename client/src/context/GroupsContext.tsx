@@ -34,7 +34,7 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         setLoading(true);
         try {
             const fetchedGroups = await fetchGroupsAPI(token);
-            console.log("My Groups from GroupContext:", fetchedGroups);
+            // console.log("My Groups from GroupContext:", fetchedGroups);
             setMyGroups(fetchedGroups);
         } catch (error) {
             console.error("Failed to fetch groups:", error);
@@ -48,7 +48,7 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         setLoading(true);
         try {
             const allGroups = await fetchAllGroupsAPI(token);
-            console.log("All Groups from GroupContext:", allGroups);
+            // console.log("All Groups from GroupContext:", allGroups);
             setAllGroups(allGroups);
         } catch (error) {
             console.error("Failed to fetch all groups:", error);
@@ -63,7 +63,7 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         setLoading(true);
         try {
             await joinGroupAPI(token, groupId, joinCode);
-            console.log("Successfully joined the group!");
+            // console.log("Successfully joined the group!");
             await fetchMyGroups();
             await fetchAllGroups();
         } catch (error: any) {
@@ -83,8 +83,8 @@ export const GroupsProvider: React.FC<{ children: ReactNode }> = ({
         fetchData();
     }, [token, user, fetchMyGroups, fetchAllGroups]);
 
-    console.log("My Groups from GroupContext:", myGroups);
-    console.log("All Groups from GroupContext:", allGroups);
+    // console.log("My Groups from GroupContext:", myGroups);
+    // console.log("All Groups from GroupContext:", allGroups);
     return (
         <GroupsContext.Provider
             value={{

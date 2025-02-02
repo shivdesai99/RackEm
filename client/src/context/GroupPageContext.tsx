@@ -103,13 +103,13 @@ export const GroupPageProvider: React.FC<{ children: ReactNode }> = ({
         async (groupId: number, name: string) => {
             if (!token) return [];
             try {
-                console.log("Searching users...");
+                // console.log("Searching users...");
                 const result = await searchUsersInGroupAPI(
                     groupId,
                     name,
                     token
                 );
-                console.log("Search users result:", result);
+                // console.log("Search users result:", result);
                 return result;
             } catch (error) {
                 console.error("Failed to search users:", error);
@@ -130,7 +130,7 @@ export const GroupPageProvider: React.FC<{ children: ReactNode }> = ({
             if (!token) return;
             setLoading(true);
             try {
-                console.log("Posting match result...");
+                // console.log("Posting match result...");
                 await postMatchAPI(
                     groupId,
                     winnerId,
@@ -138,11 +138,11 @@ export const GroupPageProvider: React.FC<{ children: ReactNode }> = ({
                     ballsLeft,
                     token
                 );
-                console.log("Match result posted successfully");
+                // console.log("Match result posted successfully");
                 // Refresh leaderboard and game log after posting match
-                console.log("Refreshing leaderboard...");
+                // console.log("Refreshing leaderboard...");
                 await fetchLeaderboard(groupId);
-                console.log("Refreshing game log...");
+                // console.log("Refreshing game log...");
                 await fetchGameLog(groupId);
             } catch (error) {
                 console.error("Failed to post match result:", error);

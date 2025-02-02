@@ -70,7 +70,7 @@ router.get(
         }
 
         try {
-            console.log("Fetching user groups for user ID:", userId);
+            // console.log("Fetching user groups for user ID:", userId);
 
             const groups = await getUserGroups(userId);
 
@@ -103,10 +103,10 @@ router.get(
     async (req: AuthenticatedRequest, res: Response): Promise<void> => {
         try {
             const groups = await getAllGroups();
-            console.log(
-                "Fetched all groups from getAllGroups endpoint:",
-                groups
-            );
+            // console.log(
+            //     "Fetched all groups from getAllGroups endpoint:",
+            //     groups
+            // );
             res.status(200).json({ groups });
             return;
         } catch (error) {

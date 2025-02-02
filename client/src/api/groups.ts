@@ -9,16 +9,16 @@ const apiClient = axios.create({
 
 export const fetchGroupsAPI = async (token: string) => {
     try {
-        console.log("Fetching groups with token:", token);
+        // console.log("Fetching groups with token:", token);
         const response = await apiClient.get("/my-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },
         });
-        console.log(
-            "Fetched groups in fetchGroupsAPI:",
-            response.data.myGroups
-        );
+        // console.log(
+        //     "Fetched groups in fetchGroupsAPI:",
+        //     response.data.myGroups
+        // );
         return response.data.myGroups;
     } catch (error: any) {
         console.error(
@@ -31,19 +31,19 @@ export const fetchGroupsAPI = async (token: string) => {
 
 export const fetchAllGroupsAPI = async (token: string) => {
     try {
-        console.log(
-            "Fetching all groups for Join Group Screen with token: ",
-            token
-        );
+        // console.log(
+        //     "Fetching all groups for Join Group Screen with token: ",
+        //     token
+        // );
         const response = await apiClient.get("/all-groups", {
             headers: {
                 authorization: `Bearer ${token}`,
             },
         });
-        console.log(
-            "Fetched all groups in fetchAllGroupsAPI:",
-            response.data.groups
-        );
+        // console.log(
+        //     "Fetched all groups in fetchAllGroupsAPI:",
+        //     response.data.groups
+        // );
         return response.data.groups;
     } catch (error: any) {
         console.error(
@@ -65,7 +65,7 @@ export const joinGroupAPI = async (
     }
 
     try {
-        console.log("Attempting to join group with token:", token);
+        // console.log("Attempting to join group with token:", token);
         const response = await apiClient.post(
             "/join",
             { groupId, joinCode },
@@ -75,7 +75,7 @@ export const joinGroupAPI = async (
                 },
             }
         );
-        console.log("Successfully joined group:", response.data.group);
+        // console.log("Successfully joined group:", response.data.group);
         return response.data.group;
     } catch (error: any) {
         console.error(

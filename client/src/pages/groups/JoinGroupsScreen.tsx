@@ -7,7 +7,7 @@ import { Group } from "@/types/models/Group";
 
 const JoinGroupsScreen: React.FC = () => {
     const { allGroups, joinGroup, myGroups } = useGroups();
-    console.log("All Groups loaded into JoinGroupScreen:", allGroups);
+    // console.log("All Groups loaded into JoinGroupScreen:", allGroups);
     const toast = useToast();
     const [selectedGroup, setSelectedGroup] = useState<Group | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);

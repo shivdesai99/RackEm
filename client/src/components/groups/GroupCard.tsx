@@ -12,12 +12,12 @@ const GroupCard: React.FC<GroupCardProps> = ({ group, onClick }) => {
         onClick(group);
     };
 
-    console.log(
-        "Rendering GroupCard:",
-        group,
-        "with member count:",
-        group.memberCount
-    );
+    // console.log(
+    //     "Rendering GroupCard:",
+    //     group,
+    //     "with member count:",
+    //     group.memberCount
+    // );
 
     return (
         <Box

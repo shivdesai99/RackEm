@@ -7,7 +7,7 @@ import { Group } from "@/types/models/Group";
 
 const MyGroupsScreen: React.FC = () => {
     const { myGroups } = useGroups();
-    console.log("My Groups loaded into MyGroupsScreen:", myGroups);
+    // console.log("My Groups loaded into MyGroupsScreen:", myGroups);
     const navigate = useNavigate();
 
     const navigateToGroupDashboard = (group: Group) => {

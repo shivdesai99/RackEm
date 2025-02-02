@@ -20,7 +20,7 @@ router.get(
         }
 
         try {
-            console.log("Fetching group metadata for group ID:", groupId);
+            // console.log("Fetching group metadata for group ID:", groupId);
             const group = await getGroupById(Number(groupId));
             if (!group) {
                 res.status(404).json({ message: "Group not found." });
@@ -80,7 +80,7 @@ router.get(
         try {
             const groupIdNum = Number(groupId);
 
-            console.log("Fetching game log for group ID:", groupIdNum);
+            // console.log("Fetching game log for group ID:", groupIdNum);
             const gameLog = await getGameLog(groupIdNum);
 
             if (!gameLog.length) {
