@@ -51,7 +51,7 @@ const LoginScreen: React.FC = () => {
                         fontSize={{ base: "md", md: "lg" }}
                         color="textSecondary"
                     >
-                        Don't have an account?
+                        Test Change
                     </Text>
                     <Button
                         variant="link"

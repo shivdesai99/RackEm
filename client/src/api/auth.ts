@@ -10,6 +10,7 @@ const apiClient = axios.create({
 export const loginAPI = async (email: string, password: string) => {
     try {
         const response = await apiClient.post("/login", { email, password });
+        sessionStorage.setItem("authToken", response.data.token);
         return response.data;
     } catch (error: any) {
         if (
@@ -35,6 +36,7 @@ export const registerAPI = async (
             password,
             name,
         });
+        sessionStorage.setItem("authToken", response.data.token);
         return response.data;
     } catch (error: any) {
         if (
@@ -59,6 +61,6 @@ export const verifyTokenAPI = async (token: string) => {
 
         return response.data.user;
     } catch (error: any) {
-        throw new Error("Token verification failed.");
+        throw new Error(error.message && "Token verification failed.");
     }
 };
