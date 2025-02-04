@@ -1,7 +1,10 @@
 import db from "../config/knex_db";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const testConnection = async (): Promise<void> => {
-    console.log("Starting test connection...");
+    console.log("Starting database connection test...");
 
     try {
         const result = await db.raw("SELECT NOW()");
