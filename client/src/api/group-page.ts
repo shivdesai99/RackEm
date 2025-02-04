@@ -4,7 +4,7 @@ import { LeaderboardUser } from "@/types/models/LeaderboardUser";
 import { Match } from "@/types/models/Match";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:5001/group-page", // Base API URL
+    baseURL: import.meta.env.VITE_API_BASE_URL + "/group-page",
     headers: {
         "Content-Type": "application/json",
     },

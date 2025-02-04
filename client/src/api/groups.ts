@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:5001/groups",
+    baseURL: import.meta.env.VITE_API_BASE_URL + "/groups",
     headers: {
         "Content-Type": "application/json",
     },
