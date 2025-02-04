@@ -37,6 +37,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
         const restoreSession = async () => {
             try {
+                console.log("Trying restoreSession");
                 const storedToken = localStorage.getItem("authToken");
                 const expiry = localStorage.getItem("authTokenExpiry");
 
@@ -50,6 +51,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
                 if (expiryTime < currentTime) {
                     console.warn("Stored token has expired. Logging out.");
                     logout();
+                    navigate("/login");
                     return;
                 }
 
@@ -67,7 +69,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         };
 
         restoreSession();
-    }, [logout, navigate]);
+    }, [logout]);
 
     return (
         <AuthContext.Provider

@@ -1,14 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "es2020",                       /* Use modern JavaScript features */
-    "module": "commonjs",                     /* Use CommonJS modules (Node.js) */
-    "rootDir": "./",                          /* Source files directory */
-    "outDir": "./dist",                       /* Output directory for compiled files */
-    "strict": true,                           /* Enable all strict type-checking options */
-    "esModuleInterop": true,                  /* Better compatibility with CommonJS modules */
-    "forceConsistentCasingInFileNames": true, /* Enforce consistent file naming */
-    "skipLibCheck": true                      /* Skip type-checking for declaration files */
-  },
-  "include": ["src/**/*", "migrations/*.ts", "seeds/*.ts"],                    /* Include all files in the src directory */
-  "exclude": ["node_modules", "dist"]         /* Exclude node_modules and compiled output */
+    "compilerOptions": {
+        "target": "es2020" /* Use modern JavaScript features */,
+        "module": "commonjs" /* Use CommonJS modules (Node.js) */,
+        "rootDir": "./" /* Source files directory */,
+        "outDir": "./dist" /* Output directory for compiled files */,
+        "strict": true /* Enable all strict type-checking options */,
+        "esModuleInterop": true /* Better compatibility with CommonJS modules */,
+        "forceConsistentCasingInFileNames": true /* Enforce consistent file naming */,
+        "skipLibCheck": true /* Skip type-checking for declaration files */
+    },
+    "include": [
+        "src/**/*",
+        "migrations/*.ts",
+        "seeds/*.ts"
+    ] /* Include all files in the src directory */,
+    "exclude": ["node_modules"] /* Exclude node_modules and compiled output */
 }
