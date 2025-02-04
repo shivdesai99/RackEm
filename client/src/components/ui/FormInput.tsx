@@ -12,7 +12,6 @@ interface FormInputProps {
 }
 
 const FormInput: React.FC<FormInputProps> = ({
-    label,
     value,
     onChange,
     type = "text",
