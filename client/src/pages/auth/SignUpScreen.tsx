@@ -31,32 +31,30 @@ const SignUpScreen: React.FC = () => {
     return (
         <Box
             minH="100vh"
+            width="full"
             bg="background"
             display="flex"
             alignItems="center"
             justifyContent="center"
-            p={{ base: 4, md: 8 }}
+            p={{ base: 2, md: 6 }}
         >
             <VStack
                 spacing={{ base: 6, md: 8 }}
                 w="full"
-                maxW={{ base: "95%", sm: "90%", md: "80%" }}
-                px={{ base: 4, md: 8 }}
+                maxW="container.sm"
+                px={{ base: 2, md: 6 }}
                 textAlign="center"
             >
                 <Header title="Sign Up" />
                 <SignUpForm onSignUpSuccess={handleSignUpSuccess} />
                 <VStack spacing={{ base: 4, md: 6 }}>
-                    <Text
-                        fontSize={{ base: "md", md: "lg" }}
-                        color="textSecondary"
-                    >
+                    <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">
                         Already have an account?
                     </Text>
                     <Button
                         variant="link"
                         fontSize={{ base: "lg", md: "xl" }}
-                        color="primary"
+                        color="blue.500"
                         onClick={() => navigate("/login")}
                     >
                         Login

@@ -7,20 +7,20 @@ const GroupTabs: React.FC = () => {
     return (
         <Box
             w="full"
-            maxW="3xl"
+            maxW={{ base: "90%", sm: "md", lg: "3xl" }} // Responsive width
             mx="auto"
             bg="white"
             borderRadius="lg"
             shadow="subtle"
-            p={{ base: 4, md: 6 }}
+            p={{ base: 2, md: 6 }} // Reduced padding for mobile
             display="flex"
             flexDirection="column"
             justifyContent="flex-start"
-            mt="20vh"
+            mt={{ base: "8vh", md: "12vh" }} // Adjusted for better mobile positioning
         >
             <Tabs isLazy={false} variant="enclosed-colored" isFitted>
                 <TabList
-                    borderWidth="2px"
+                    borderWidth={{ base: "1px", md: "2px" }} // Adjusted border width for mobile
                     borderColor="dark-blue"
                     borderRadius="md"
                     boxShadow="medium"
@@ -38,7 +38,7 @@ const GroupTabs: React.FC = () => {
                             transition: "all 0.2s ease-in-out",
                         }}
                         fontWeight="bold"
-                        py={3}
+                        py={{ base: 2, md: 3 }} // Adjusted padding for mobile
                     >
                         My Groups
                     </Tab>
@@ -54,7 +54,7 @@ const GroupTabs: React.FC = () => {
                             transition: "all 0.2s ease-in-out",
                         }}
                         fontWeight="bold"
-                        py={3}
+                        py={{ base: 2, md: 3 }} // Adjusted padding for mobile
                     >
                         Join Groups
                     </Tab>

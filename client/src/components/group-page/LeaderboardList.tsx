@@ -10,15 +10,17 @@ interface LeaderboardListProps {
 const LeaderboardList: React.FC<LeaderboardListProps> = ({ leaderboard }) => {
     if (!leaderboard.length) {
         return (
-            <Text fontSize="lg" color="gray" textAlign="center">
-                No leaderboard data available.
-            </Text>
+            <Box textAlign="center" mt={8}>
+                <Text fontSize="lg" color="gray">
+                    No leaderboard data available.
+                </Text>
+            </Box>
         );
     }
 
     return (
-        <Box maxW="80%" mx="auto" h="65vh" overflowY="auto">
-            <VStack align="stretch">
+        <Box w="full" h="75vh" overflowY="auto">
+            <VStack align="stretch" w="full">
                 {leaderboard.map((entry, index) => (
                     <LeaderboardCard
                         key={entry.user_id}

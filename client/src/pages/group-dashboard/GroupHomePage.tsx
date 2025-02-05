@@ -21,23 +21,20 @@ const GroupHomePage: React.FC = () => {
         <Box
             display="flex"
             flexDirection="column"
-            gap={14}
-            h="80vh"
+            gap={7}
+            px={3}
+            h="100vh"
             bg="#1E2A47" // Darker Navy for a more modern feel
-            pl={16}
-            pr={16}
-            marginBottom={32}
-            marginTop={32}
         >
             <MenuIcon />
             <DropdownMenu />
 
-            <VStack spacing={2} align="center" mt={8}>
+            <VStack spacing={2} align="center" justify="center" mt={8}>
                 {loading ? (
                     <Spinner size="lg" color="white" />
                 ) : (
                     <Text
-                        fontSize="5xl"
+                        fontSize="3xl"
                         fontWeight="bold"
                         color="white"
                         fontFamily="Georgia"
@@ -50,18 +47,16 @@ const GroupHomePage: React.FC = () => {
 
             <Box
                 flex={1}
-                mt={4}
-                mb={4}
                 bg="whiteAlpha.900"
                 borderRadius="lg"
                 boxShadow="md"
                 overflow="auto"
-                maxH="50vh"
+                maxH="70vh"
             >
                 <GroupPageTabs />
             </Box>
 
-            <Box textAlign="center" position="relative" bottom={15}>
+            <Box textAlign="center">
                 <PostMatchButton onOpen={() => setIsModalOpen(true)} />
             </Box>
 

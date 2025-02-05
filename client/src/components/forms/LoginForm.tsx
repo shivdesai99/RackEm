@@ -43,12 +43,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
 
     return (
         <Box
-            w="100%"
-            maxW="550px"
-            minW="400px"
-            mx="auto"
-            p={{ base: 4, md: 8 }}
-            bg="surface"
+            w={{ base: "90%", sm: "400px" }}
+            p={{ base: 4, md: 6 }}
+            bg="background"
             borderRadius="lg"
             boxShadow="md"
         >
@@ -56,12 +53,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
                 as="h2"
                 size="lg"
                 textAlign="center"
-                mb={6}
+                mb={4}
                 color="dark-blue"
             >
                 Login
             </Heading>
-            <VStack spacing={4}>
+            <VStack spacing={4} align="center">
                 <FormInput
                     label="Email"
                     value={email}

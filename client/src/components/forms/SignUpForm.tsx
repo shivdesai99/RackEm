@@ -45,12 +45,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUpSuccess }) => {
 
     return (
         <Box
-            w="100%" // Ensures full width of the parent container
-            maxW="550px" // Caps the maximum width for large screens
-            minW="400px" // Sets a minimum width to avoid shrinking too much
-            mx="auto" // Centers the form horizontally
-            p={{ base: 4, md: 8 }} // Adjusts padding for smaller and larger screens
-            bg="surface"
+            w={{ base: "90%", sm: "400px" }}
+            p={{ base: 4, md: 6 }}
+            bg="background"
             borderRadius="lg"
             boxShadow="md"
         >
@@ -58,12 +55,12 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSignUpSuccess }) => {
                 as="h2"
                 size="lg"
                 textAlign="center"
-                mb={6}
+                mb={4}
                 color="dark-blue"
             >
                 Sign Up
             </Heading>
-            <VStack spacing={4}>
+            <VStack spacing={4} align="center">
                 <FormInput
                     label="Name"
                     value={name}

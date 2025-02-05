@@ -8,7 +8,7 @@ interface GameLogListProps {
 }
 
 const GameLogList: React.FC<GameLogListProps> = ({ gameLog }) => {
-    if (gameLog.length === 0) {
+    if (!gameLog.length) {
         return (
             <Box textAlign="center" mt={8}>
                 <Text fontSize="lg" color="gray">
@@ -19,8 +19,8 @@ const GameLogList: React.FC<GameLogListProps> = ({ gameLog }) => {
     }
 
     return (
-        <Box maxW="90%" mx="auto" h="65vh" overflowY="auto">
-            <VStack align="stretch">
+        <Box w="full" h="75vh" overflowY="auto">
+            <VStack align="stretch" w="full">
                 {gameLog
                     .slice()
                     .sort(
