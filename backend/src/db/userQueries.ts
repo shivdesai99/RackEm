@@ -17,9 +17,7 @@ export const getUsersInGroup = async (
             .select("users.id as user_id", "users.name", "users.email")
             .where("user_to_groups.group_id", groupId)
             .andWhere("users.name", "like", `%${name}%`)
-            .orderBy("users.name", "asc")
-            .limit(10);
-
+            .orderBy("users.name", "asc");
         return users;
     } catch (error) {
         console.error("Error fetching users in group:", error);
