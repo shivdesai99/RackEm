@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, HStack, Spacer } from "@chakra-ui/react";
+import { Box, Text, Flex, Badge } from "@chakra-ui/react";
 import { Match } from "@/types/models/Match";
 
 interface GameLogCardProps {
@@ -8,67 +8,81 @@ interface GameLogCardProps {
 }
 
 const GameLogCard: React.FC<GameLogCardProps> = ({ match, matchNumber }) => {
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString("en-US", {
+    const formattedDate = new Date(match.date_posted).toLocaleDateString(
+        "en-US",
+        {
             month: "short",
             day: "numeric",
             year: "numeric",
-        });
-    };
-
-    // Randomly swap player order for visual variation
-    const players =
-        Math.random() > 0.5
-            ? `${match.winner_name} vs. ${match.loser_name}`
-            : `${match.loser_name} vs. ${match.winner_name}`;
+        }
+    );
 
     return (
         <Box
             bg="whiteAlpha.900"
-            p={5}
+            p={{ base: 2, md: 3 }}
             borderRadius="md"
-            boxShadow="sm"
-            w="100%"
-            maxW="700px"
-            mx="auto"
+            shadow="sm"
             mb={2}
         >
-            <HStack spacing={3} justifyContent="space-between">
-                {/* Match Number */}
-                <Text fontWeight="bold" color="gray.700">
-                    Match #{matchNumber}
+            <Flex
+                align="center"
+                gap={{ base: 2, md: 4 }}
+                wrap="nowrap"
+                minH="40px"
+            >
+                <Text
+                    fontSize="sm"
+                    fontWeight="bold"
+                    color="gray"
+                    minW={8}
+                    flexShrink={0}
+                >
+                    #{matchNumber}
                 </Text>
 
-                {/* Players */}
-                <Text fontSize="md" color="gray.800">
-                    {players}
-                </Text>
-
-                {/* Winner */}
-                {/* Add a slight seperate between players names and result */}
-                <Spacer />
-                <Text fontSize="md" color="green.300" fontWeight="bold">
-                    <Text as="span" mr={3}>
-                        {match.winner_name}
+                <Flex align="center" minW={0}>
+                    <Text
+                        fontSize={{ base: "md", md: "md" }}
+                        color="green.400"
+                        fontWeight="bold"
+                        isTruncated
+                    >
+                        {match.winner_name.split(" ")[0]}
                     </Text>
-                    🏆{" "}
+                </Flex>
+
+                <Text color="balck" fontSize="xs" fontWeight="bold">
+                    vs
                 </Text>
 
-                {/* Balls Left (only if applicable) */}
+                <Text
+                    fontSize={{ base: "md", md: "md" }}
+                    color="red.500"
+                    fontWeight="bold"
+                    isTruncated
+                    flex={1}
+                    minW={0}
+                >
+                    {match.loser_name.split(" ")[0]}
+                </Text>
+
                 {match.balls_left !== null && (
-                    <Text fontSize="sm" color="gray.500">
-                        Balls Left: {match.balls_left}
-                    </Text>
+                    <Badge colorScheme="blue" variant="subtle">
+                        🎱 {match.balls_left}
+                    </Badge>
                 )}
 
-                <Spacer />
-
-                {/* Match Date */}
-                <Text fontSize="xs" color="gray.500">
-                    {formatDate(match.date_posted)}
+                <Text
+                    fontSize={{ base: "xs", md: "sm" }}
+                    color="gray.500"
+                    minW={14}
+                    flexShrink={0}
+                    ml="auto"
+                >
+                    {formattedDate}
                 </Text>
-            </HStack>
+            </Flex>
         </Box>
     );
 };
