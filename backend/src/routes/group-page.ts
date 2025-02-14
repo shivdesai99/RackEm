@@ -117,7 +117,7 @@ router.post(
             .custom((value, { req }) => value !== req.body.winnerId)
             .withMessage("Winner and Loser IDs must be different."),
         check("ballsLeft")
-            .optional()
+            .optional({ nullable: true })
             .isInt({ min: 0 })
             .withMessage("Balls left must be a positive integer."),
     ],
